@@ -35,8 +35,9 @@ public class L2Command {
                 Session.createSession(t.get().getId(),username,true);
                 List<KeyValue> keyValueList = Arrays.asList(
                         new KeyValue("1", "用户基本信息"),
-                        new KeyValue("2", "书籍信息"),
-                        new KeyValue("3", "已借书籍"),
+                        new KeyValue("2", "分类查询"),
+                        new KeyValue("3", "书籍信息"),
+                        new KeyValue("4", "已借书籍"),
                         new KeyValue("0", "返回上级")
                 );
 
@@ -84,10 +85,10 @@ public class L2Command {
 
                 List<KeyValue> keyValueList = Arrays.asList(
                         new KeyValue("1", "用户基本信息"),
-                        new KeyValue("2", "书籍信息"),
-                        new KeyValue("3", "已借书籍"),
-                        new KeyValue("4", "相关班级"),
-                        new KeyValue("5", "图书分类"),
+                        new KeyValue("2", "分类查询"),
+                        new KeyValue("3", "书籍信息"),
+                        new KeyValue("4", "已借书籍"),
+                        new KeyValue("5", "相关班级"),
                         new KeyValue("0", "返回上级")
                 );
                 StringBuilder sb = new StringBuilder();
@@ -150,9 +151,12 @@ public class L2Command {
                             loop = false;
                             break;
                         case "2": //
-                            bookService.showAllBooks(sc);
+                            ctgService.showCategorys(sc);
                             break;
                         case "3":
+                            bookService.showAllBooks(sc);
+                            break;
+                        case "4":
                             bookService.showMyBooks(sc);
                             break;
                         default:
@@ -177,16 +181,16 @@ public class L2Command {
                             loop = false;
                             break;
                         case "2": //
-                            bookService.showAllBooks(sc);
+                            ctgService.showCategorys(sc);
                             break;
                         case "3":
-                            bookService.showMyBooks(sc);
+                            bookService.showAllBooks(sc);
                             break;
                         case "4":
-                            clazzService.showClasses(sc);
+                            bookService.showMyBooks(sc);
                             break;
                         case "5":
-                            ctgService.showCategorys(sc);
+                            clazzService.showClasses(sc);
                             break;
                         default:
                             System.out.println("输入错误");
